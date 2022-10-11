@@ -21,10 +21,24 @@ const initialState = {
     { name: "Carlos", img: carlos },
     { name: "Blake", img: blake },
   ],
+  frontEnd: [],
+  backEnd: [],
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "ADD_FRONTEND":
+      const newFrontEnd = [...state.frontEnd, action.payload];
+      const newStudentsFront = state.students.filter(
+        (student) => student !== action.payload
+      );
+      return { ...state, frontEnd: newFrontEnd, student: newStudentsFront };
+    case "ADD_BACKEND":
+      const newBackend = [...state.backEnd, action.payload];
+      const newStudentsBack = state.students.filter(
+        (student) => student !== action.payload
+      );
+      return { ...state, backEnd: newBackend, student: newStudentsBack };
     default:
       return state;
   }

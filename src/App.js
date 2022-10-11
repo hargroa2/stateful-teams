@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 
 function App() {
   const students = useSelector((state) => state.students);
+  const backend = useSelector((state) => state.backEnd);
+  const frontend = useSelector((state) => state.frontEnd);
   return (
     <div className="topcontainer">
       <h1>Student Team React Challenge</h1>
@@ -17,7 +19,11 @@ function App() {
         Reset
       </button>
       <div className="App">
-        <MainContainer students={students} />
+        <MainContainer
+          students={students}
+          backend={backend}
+          frontend={frontend}
+        />
       </div>
     </div>
   );
